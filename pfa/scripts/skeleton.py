@@ -80,4 +80,6 @@ def main(path):
             print(f"{'':<12}doc: {doc}")
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2 or not sys.argv[1].endswith((".lean", ".v")):
+        sys.exit("usage: python skeleton.py Formal.lean | Formal.v")
     main(sys.argv[1])

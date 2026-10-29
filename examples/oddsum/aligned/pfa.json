@@ -1,0 +1,70 @@
+{
+  "status": "FAIL",
+  "fails": [
+    "thm OddSum.S_even: hypothesis 'h_even' is 'exists k : nat, n = 2 * k' in the paper but 'n % 4 = 0' formally, and no equivalence could be proved"
+  ],
+  "untagged": [
+    "cor: $S(n)$ is odd if and only if $n$ is odd...."
+  ],
+  "stray": [],
+  "equivalences": [
+    "thm OddSum.S_eq_sq: conclusion 'S n = n ^ 2' proved equivalent to formal 'S n = n * n'",
+    "thm OddSum.S_even: conclusion 'exists k : nat, S n = 2 * k' proved equivalent to formal 'S n % 2 = 0'"
+  ],
+  "review": [
+    [
+      "definition OddSum.S",
+      "(definition)",
+      "read the formal definition once",
+      null
+    ],
+    [
+      "example OddSum.S_three",
+      "$S(3) = 1 + 3 + 5 = 9$",
+      "S 3 = 9",
+      null
+    ],
+    [
+      "thm OddSum.S_eq_sq",
+      "$n \\in \\mathbb{N}$",
+      "nat",
+      null
+    ],
+    [
+      "thm OddSum.S_even",
+      "$n$",
+      "nat",
+      null
+    ],
+    [
+      "thm OddSum.S_diff",
+      "n",
+      "nat",
+      null
+    ],
+    [
+      "thm OddSum.S_diff",
+      "$n \\geq 1$",
+      "1 <= n",
+      null
+    ],
+    [
+      "thm OddSum.S_diff",
+      "$S(n) - S(n-1) = 2n - 1$",
+      "S n - S (n - 1) = 2 * n - 1",
+      null
+    ],
+    [
+      "thm OddSum.S_eq_sq",
+      "$S(n) = n^2$",
+      "S n = n ^ 2",
+      "S n = n * n"
+    ],
+    [
+      "thm OddSum.S_even",
+      "$S(n)$ is even",
+      "exists k : nat, S n = 2 * k",
+      "S n % 2 = 0"
+    ]
+  ]
+}

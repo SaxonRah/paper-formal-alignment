@@ -427,7 +427,7 @@ def compare(items, sigs, norm, prover, prover_name, namespaces):
             review.append((tag, d, t, None))
         ctx = [(b["name"], b["type"]) for b in sig["binders"] if b["name"] in it["vars"]]
         def want(paper, formal, label, lemma, display):
-            if any(w in paper for w in ("sorry", "admit", "Admitted")):
+            if re.search(r"\b(sorry|admit|Admitted)\b", paper):
                 fails.append(f"{tag}: {label} reading contains a proof escape")
                 return
             if norm(paper) == norm(formal):
@@ -437,9 +437,8 @@ def compare(items, sigs, norm, prover, prover_name, namespaces):
                                     "ctx": ctx, "lemma": lemma, "display": display})
         for key, (t, d) in it["hyps"].items():
             if all(x in fb for x in key):
-                formal = " /\\ ".join(f"({fb[x]['type']})" for x in key) if len(key) > 1 else fb[key[0]]["type"]
-                if prover_name == "lean" and len(key) > 1:
-                    formal = " ∧ ".join(f"({fb[x]['type']})" for x in key)
+                conj = " ∧ " if prover_name == "lean" else " /\\ "
+                formal = conj.join(f"({fb[x]['type']})" for x in key) if len(key) > 1 else fb[key[0]]["type"]
                 want(t, formal, f"hypothesis '{','.join(key)}'", f"pfa_eq_{short}_{'_'.join(key)}", d)
         if len(it["concl"]) != 1:
             fails.append(f"{tag}: needs exactly one \\concl tag (found {len(it['concl'])})")
@@ -475,6 +474,7 @@ def main():
     ap.add_argument("--require-proved", action="append", default=[],
                     help="formal name that must exist and be fully proved (e.g. appended tests)")
     ap.add_argument("--json", help="also write results as JSON to this file")
+    ap.add_argument("--keep-temp", action="store_true", help="keep the prover's temporary folder")
     a = ap.parse_args()
     try:
         if not a.paper.lower().endswith(".tex"):
@@ -505,6 +505,8 @@ def main():
     except (ToolError, OSError) as e:
         print(f"TOOL ERROR: {e}")
         sys.exit(3)
+    if not a.keep_temp:
+        shutil.rmtree(prover.tmp, ignore_errors=True)
 
     print(f"Checked {len(items)} tagged statements against {a.lean or a.rocq}\n")
     status = "FAIL" if fails else ("INCOMPLETE" if untagged else "PASS")

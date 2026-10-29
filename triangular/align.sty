@@ -1,9 +1,0 @@
-% align.sty: tags that bind a paper's statements to a formalization.
-% Each macro prints its display text and carries a formal reading the
-% checker can extract. Formal readings use one ASCII syntax for both
-% provers (<= for ≤, /\ for ∧, -> for →).
-\ProvidesPackage{align}
-\newcommand{\formal}[1]{}      % \formal{Name}: the formal object this environment states
-\newcommand{\var}[3]{#3}       % \var{name}{type}{display}: a variable of the statement
-\newcommand{\hyp}[3]{#3}       % \hyp{name}{formal}{display}: a hypothesis
-\newcommand{\concl}[2]{#2}     % \concl{formal}{display}: the conclusion

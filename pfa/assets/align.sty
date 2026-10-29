@@ -1,0 +1,9 @@
+% align.sty (PFA): tags that bind a paper's statements to a formalization.
+% Each macro prints only its display text, so the PDF is unchanged.
+% Formal readings use one ASCII syntax for Lean and Rocq:
+%   <= >= <> /\ \/ ~ -> <->   exists x : T, ...   forall x : T, ...   nat
+\ProvidesPackage{align}
+\newcommand{\formal}[1]{}      % \formal{Name}: the formal object this environment states
+\newcommand{\var}[3]{#3}       % \var{name(s)}{type}{display}: variable(s) of the statement
+\newcommand{\hyp}[3]{#3}       % \hyp{name(s)}{formal}{display}: hypothesis (several names = conjunction)
+\newcommand{\concl}[2]{#2}     % \concl{formal}{display}: the conclusion

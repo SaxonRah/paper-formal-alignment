@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+
+\title{Sums of Odd Numbers}
+\author{A. Tester}
+\date{}
+
+\begin{document}
+\maketitle
+
+Throughout, $\mathbb{N} = \{0, 1, 2, \dots\}$.
+
+\begin{definition}
+For $n \in \mathbb{N}$ let $S(n)$ be the sum of the first $n$ odd numbers:
+$S(0) = 0$ and $S(n+1) = S(n) + (2n+1)$.
+\end{definition}
+
+\begin{example}
+$S(3) = 1 + 3 + 5 = 9$.
+\end{example}
+
+\begin{thm}\label{thm:sq}
+For every $n \in \mathbb{N}$, $S(n) = n^2$.
+\end{thm}
+
+\begin{thm}\label{thm:even}
+If $n$ is even, then $S(n)$ is even.
+\end{thm}
+
+\begin{thm}\label{thm:diff}
+For every $n \geq 1$, $S(n) - S(n-1) = 2n - 1$.
+\end{thm}
+
+\begin{cor}
+$S(n)$ is odd if and only if $n$ is odd.
+\end{cor}
+
+\end{document}

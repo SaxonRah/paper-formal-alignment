@@ -1,0 +1,13 @@
+Checked 5 tagged statements against OddSum.lean
+
+MISMATCHES
+  ✗ thm OddSum.S_even: hypothesis 'h_even' is 'exists k : nat, n = 2 * k' in the paper but 'n % 4 = 0' formally, and no equivalence could be proved
+
+UNTAGGED STATEMENTS (not checked)
+  ? cor: $S(n)$ is odd if and only if $n$ is odd....
+
+EQUIVALENCES PROVED BY THE PROVER
+  ≡ thm OddSum.S_eq_sq: conclusion 'S n = n ^ 2' proved equivalent to formal 'S n = n * n'
+  ≡ thm OddSum.S_even: conclusion 'exists k : nat, S n = 2 * k' proved equivalent to formal 'S n % 2 = 0'
+
+Result: FAIL. Paper and formalization do not agree.

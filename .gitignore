@@ -1,0 +1,17 @@
+# prover build output
+*.olean
+*.ilean
+*.vo
+*.vok
+*.vos
+*.glob
+.*.aux
+.lake/
+# LaTeX build output
+*.aux
+*.log
+*.out
+*.synctex.gz
+# Python
+__pycache__/
+*.pyc

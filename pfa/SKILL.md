@@ -24,6 +24,9 @@ circular and certifies nothing. A mismatch is a result to report, not a bug to m
 
 ## Bundled files
 
+Paths below are relative to the skill folder. If you are working from the GitHub repository
+instead of an installed skill, the skill folder is `pfa/` and `examples/` is at the repository root.
+
 - `scripts/check_alignment.py`: the checker. Run with `--help` for all options.
 - `scripts/skeleton.py`: lists formal declarations with binder *names* only (no statements).
 - `scripts/verify_copies.py`: proves your copies changed nothing they weren't allowed to.
