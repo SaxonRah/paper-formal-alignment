@@ -136,5 +136,4 @@ MISMATCHES
   XXX: theorem Paper.T_add_T_pred: 'h_pos' is '1 <= n' in the paper but '2 <= n' formally
 
 Result: FAIL. Paper and formalization do not agree.
-PS C:\triangular\>
 ```
