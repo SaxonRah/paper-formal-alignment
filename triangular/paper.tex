@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{align}
+
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+\title{A Note on Triangular Numbers}
+\author{An Example Author}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{definition}\formal{Paper.T}
+The \emph{triangular numbers} $T(n)$ are defined by $T(0) = 0$ and
+$T(n+1) = T(n) + (n+1)$, so $T(n)$ counts the dots in a triangle with $n$ rows.
+\end{definition}
+
+\begin{example}\formal{Paper.T_four}
+\concl{T 4 = 10}{$T(4) = 10$}, since $1 + 2 + 3 + 4 = 10$.
+\end{example}
+
+\begin{theorem}[Closed form]\label{thm:closed}\formal{Paper.two_mul_T}
+For every natural number \var{n}{nat}{$n$},
+\concl{2 * T n = n * (n + 1)}{$2\,T(n) = n(n+1)$}.
+\end{theorem}
+
+\begin{proof}
+By induction on $n$. The case $n = 0$ is immediate, and
+$2\,T(n+1) = 2\,T(n) + 2(n+1) = n(n+1) + 2(n+1) = (n+1)(n+2)$.
+\end{proof}
+
+\begin{theorem}\label{thm:square}\formal{Paper.T_add_T_pred}
+Let \var{n}{nat}{$n$} be a natural number with \hyp{h_pos}{1 <= n}{$n \geq 1$}.
+Then \concl{T n + T (n - 1) = n * n}{$T(n) + T(n-1) = n^2$}.
+\end{theorem}
+
+\begin{proof}
+Write $n = k + 1$. Then $T(n) + T(n-1) = 2\,T(k) + (k+1) = k(k+1) + (k+1) = (k+1)^2$
+by Theorem~\ref{thm:closed}.
+\end{proof}
+
+\begin{example}\formal{Paper.T_add_T_pred_nonvacuous}
+The hypothesis of Theorem~\ref{thm:square} is satisfiable:
+\concl{exists n : nat, 1 <= n}{some natural number satisfies $n \geq 1$}.
+\end{example}
+
+\end{document}
